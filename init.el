@@ -9,6 +9,7 @@
 
 (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
 (setq default-frame-alist '((width . 135) (height . 40)))
+(set-window-scroll-bars (minibuffer-window) nil nil)
 
 (global-set-key (kbd "M-i") 'imenu)
 (global-set-key (kbd "M-o") 'window-swap-states)
