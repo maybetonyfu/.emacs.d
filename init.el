@@ -4,9 +4,7 @@
 (smartparens-global-mode t)
 (require 'smartparens-config)
 
-
 (fset 'yes-or-no-p 'y-or-n-p)
-
 
 (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
 (setq default-frame-alist '((width . 135) (height . 40)))
@@ -16,8 +14,15 @@
 (global-set-key (kbd "C-c p f") 'project-find-file)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "<f1>") 'shell)
+
+(defun my-delete-shell-window ()
+  (interactive)
+  (delete-windows-on "*shell*" nil))
+
+(define-key shell-mode-map (kbd "<f1>") 'my-delete-shell-window)
+
 (tool-bar-mode -1)
-(menu-bar-mode -1)
+(menu-bar-mode +1)
 (selectrum-mode +1)
 (setq completion-styles '(orderless))
 (savehist-mode)
@@ -47,12 +52,13 @@
  '(jdee-db-requested-breakpoint-face-colors (cons "#D0D0E3" "#005F00"))
  '(jdee-db-spec-breakpoint-face-colors (cons "#D0D0E3" "#4E4E4E"))
  '(make-backup-files nil)
- '(next-screen-context-lines 35)
+ '(next-screen-context-lines 15)
  '(objed-cursor-color "#D70000")
  '(package-selected-packages
    '(modus-themes orderless whole-line-or-region selectrum-prescient selectrum smartparens dumb-jump haskell-mode doom-themes))
  '(rustic-ansi-faces
    ["#F5F5F9" "#D70000" "#005F00" "#AF8700" "#1F55A0" "#AF005F" "#007687" "#0F1019"])
+ '(scroll-conservatively 100)
  '(sp-base-key-bindings 'sp)
  '(standard-indent 2)
  '(tab-always-indent t)
@@ -62,12 +68,15 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:height 130 :family "Cascadia Code"))))
  '(whitespace-line ((t nil))))
 
 (when (equal system-type 'darwin)
   (set-frame-font "Cascadia Code 15")
   (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin")))
+
+(when (and (eq system-type 'gnu/linux)
+           (getenv "WSLENV"))
+  (set-frame-font "Cascadia Code 11"))
 
 (add-hook 'prog-mode-hook
 	  (lambda ()
