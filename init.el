@@ -1,4 +1,5 @@
 (require 'package)
+(require 'view)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 (smartparens-global-mode t)
@@ -14,12 +15,17 @@
 (global-set-key (kbd "C-c p f") 'project-find-file)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "<f1>") 'shell)
+(global-set-key (kbd "C-v") 'View-scroll-half-page-forward)
+(global-set-key (kbd "M-v") 'View-scroll-half-page-backward)
 
 (defun my-delete-shell-window ()
   (interactive)
   (delete-windows-on "*shell*" nil))
 
-(define-key shell-mode-map (kbd "<f1>") 'my-delete-shell-window)
+(defun my-delete-shell-window-key ()
+  (local-set-key (kbd "<f1>") 'my-delete-shell-window))
+
+(add-hook 'shell-mode-hook 'my-delete-shell-window-key)
 
 (tool-bar-mode -1)
 (menu-bar-mode +1)
