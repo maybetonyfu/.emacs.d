@@ -4,7 +4,7 @@
 (smartparens-global-mode t)
 (require 'smartparens-config)
 
-(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
+
 (fset 'yes-or-no-p 'y-or-n-p)
 
 
@@ -30,17 +30,29 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(auto-save-default nil)
- '(custom-enabled-themes '(doom-acario-light))
+ '(custom-enabled-themes '(modus-operandi))
  '(custom-safe-themes t)
  '(dired-dwim-target 'dired-dwim-target-next)
+ '(fci-rule-color "#4E4E4E")
  '(haskell-compile-stack-build-command "stack build --fast")
  '(haskell-compiler-type 'stack)
+ '(highlight-tail-colors
+   ((("#dce6e0" "color-22" "green")
+     . 0)
+    (("#dce8ed" "color-30" "cyan")
+     . 20)))
  '(indent-tabs-mode nil)
  '(initial-buffer-choice t)
+ '(jdee-db-active-breakpoint-face-colors (cons "#D0D0E3" "#009B7C"))
+ '(jdee-db-requested-breakpoint-face-colors (cons "#D0D0E3" "#005F00"))
+ '(jdee-db-spec-breakpoint-face-colors (cons "#D0D0E3" "#4E4E4E"))
  '(make-backup-files nil)
  '(next-screen-context-lines 35)
+ '(objed-cursor-color "#D70000")
  '(package-selected-packages
-   '(orderless whole-line-or-region selectrum-prescient selectrum smartparens dumb-jump haskell-mode doom-themes))
+   '(modus-themes orderless whole-line-or-region selectrum-prescient selectrum smartparens dumb-jump haskell-mode doom-themes))
+ '(rustic-ansi-faces
+   ["#F5F5F9" "#D70000" "#005F00" "#AF8700" "#1F55A0" "#AF005F" "#007687" "#0F1019"])
  '(sp-base-key-bindings 'sp)
  '(standard-indent 2)
  '(tab-always-indent t)
@@ -52,6 +64,10 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:height 130 :family "Cascadia Code"))))
  '(whitespace-line ((t nil))))
+
+(when (equal system-type 'darwin)
+  (set-frame-font "Cascadia Code 15")
+  (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin")))
 
 (add-hook 'prog-mode-hook
 	  (lambda ()
