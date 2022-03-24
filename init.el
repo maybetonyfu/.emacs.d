@@ -85,6 +85,9 @@
            (getenv "WSLENV"))
   (set-frame-font "Cascadia Code 11"))
 
+(when (eq system-type 'gnu/linux)
+  (set-frame-font "Cascadia Code 13"))
+
 (add-hook 'prog-mode-hook
 	  (lambda ()
 	    (progn
