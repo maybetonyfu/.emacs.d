@@ -45,6 +45,7 @@
  '(custom-enabled-themes '(modus-operandi))
  '(custom-safe-themes t)
  '(dired-dwim-target 'dired-dwim-target-next)
+ '(display-line-numbers-width 3)
  '(fci-rule-color "#4E4E4E")
  '(haskell-compile-stack-build-command "stack build --fast")
  '(haskell-compiler-type 'stack)
@@ -86,7 +87,7 @@
   (set-frame-font "Cascadia Code 11"))
 
 (when (eq system-type 'gnu/linux)
-  (set-frame-font "Cascadia Code 13"))
+  (set-frame-font "Cascadia Code 14"))
 
 (add-hook 'prog-mode-hook
 	  (lambda ()
