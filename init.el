@@ -82,12 +82,10 @@
   (set-frame-font "Cascadia Code 15")
   (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin")))
 
-(when (and (eq system-type 'gnu/linux)
-           (getenv "WSLENV"))
-  (set-frame-font "Cascadia Code 11"))
-
 (when (eq system-type 'gnu/linux)
-  (set-frame-font "Cascadia Code 14"))
+  (cond
+   ((getenv "WSLENV") (set-frame-font "Cascadia Code 11"))
+   (t (set-frame-font "Cascadia Code 14")))
 
 (add-hook 'prog-mode-hook
 	  (lambda ()
