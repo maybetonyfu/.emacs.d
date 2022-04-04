@@ -82,10 +82,10 @@
   (set-frame-font "Cascadia Code 15")
   (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin")))
 
-(when (eq system-type 'gnu/linux)
+(when (equal system-type 'gnu/linux)
   (cond
    ((getenv "WSLENV") (set-frame-font "Cascadia Code 11"))
-   (t (set-frame-font "Cascadia Code 14")))
+   (t (set-frame-font "Cascadia Code 14"))))
 
 (add-hook 'prog-mode-hook
 	  (lambda ()
@@ -97,3 +97,4 @@
 (put 'dired-find-alternate-file 'disabled nil)
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
+
