@@ -9,7 +9,7 @@
 (when (display-graphic-p)
   (tool-bar-mode 0)
   (scroll-bar-mode 0))
-
+(setq default-frame-alist '((width . 120) (height . 30)))
 (setq inhibit-startup-screen t)
 (column-number-mode)
 (ido-mode 1)
@@ -36,3 +36,6 @@
               (display-line-numbers-mode)
               (make-local-variable 'show-trailing-whitespace)
               (setq show-trailing-whitespace t))))
+
+(global-set-key (kbd "C-c p f") 'project-find-file)
+(global-set-key (kbd "C-x C-b") 'ibuffer)
