@@ -15,9 +15,11 @@
 (ido-mode 1)
 (ido-everywhere)
 (setq ido-enable-flex-matching t)
-(fido-mode)
 
-(visual-line-mode)
+(fido-mode)
+(fido-vertical-mode) ;; Make suggestion list vertical, as in selectrum
+(global-tab-line-mode)
+(global-visual-line-mode)
 (setq-default indicate-empty-lines t)
 (setq-default indicate-buffer-boundaries 'left)
 (setq-default indent-tabs-mode nil)
@@ -25,6 +27,7 @@
 (setq show-paren-delay 0)
 (show-paren-mode)
 
+(global-company-mode)
 (setq auto-save-file-name-transforms '((".*" "~/.tmp/emacs/auto-save/" t)))
 (setq backup-directory-alist '(("." . "~/.tmp/emacs/backup/")))
 (setq backup-by-copying t)
@@ -37,5 +40,5 @@
               (make-local-variable 'show-trailing-whitespace)
               (setq show-trailing-whitespace t))))
 
-(global-set-key (kbd "C-c p f") 'project-find-file)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
+(global-set-key (kbd "C-c n") #'flymake-goto-next-error)
