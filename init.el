@@ -41,4 +41,8 @@
               (setq show-trailing-whitespace t))))
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
-(global-set-key (kbd "C-c n") #'flymake-goto-next-error)
+
+(add-hook 'eglot-connect-hook
+          (lambda () (
+            (progn
+              (global-set-key (kbd "C-c n") #'flymake-goto-next-error)))))
