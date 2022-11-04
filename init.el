@@ -1,4 +1,6 @@
 (setq custom-file (concat user-emacs-directory "custom.el"))
+;; Packages format-all dumb-jump eglot doom-themes doom-modeline haskell-mode all-the-icons flycheck magit company
+
 (load custom-file t)
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
@@ -42,7 +44,35 @@
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
-(add-hook 'eglot-connect-hook
-          (lambda () (
-            (progn
-              (global-set-key (kbd "C-c n") #'flymake-goto-next-error)))))
+;; (add-hook 'haskell-mode-hook
+;;           (lambda ()
+;;             (eglot)
+;;             ))
+
+(defun tf-toggle-previous-letter-case ()
+  "Toggle the letter case of the letter to the left of cursor."
+  (interactive)
+  (let ((case-fold-search nil))
+    (left-char 1)
+    (cond
+     ((looking-at "[[:lower:]]") (upcase-region (point) (1+ (point))))
+     ((looking-at "[[:upper:]]") (downcase-region (point) (1+ (point)))))
+    (right-char)))
+
+(doom-modeline-mode 1)
+
+(defun scroll-up-small ()
+  (interactive)
+  (scroll-up 15))
+
+(defun scroll-down-small ()
+  (interactive)
+  (scroll-down 15))
+
+(global-set-key (kbd "C-v") 'scroll-up-small)
+(global-set-key (kbd "M-v") 'scroll-down-small)
+
+(global-set-key (kbd "C-c C-t") 'tf-toggle-previous-letter-case)
+(global-set-key (kbd "C-c C-i") 'set-selective-display)
+
+(add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
