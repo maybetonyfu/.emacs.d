@@ -1,10 +1,14 @@
+
+(menu-bar-mode 0)
 ;; OS X related settings
 (when (eq system-type 'darwin)
+  (menu-bar-mode 1)
   (setf
    mac-command-modifier 'meta
    mac-option-modifier 'super
    mac-control-modifier 'control
    mac-function-modifier 'hyper)
+
    ;; Make sure zsh exe paths are sourced
    (use-package exec-path-from-shell
      :ensure t
@@ -57,7 +61,6 @@
 (setf create-lockfiles nil)
 
 (scroll-bar-mode 0)
-(menu-bar-mode 0)
 
 (if (display-graphic-p)
   (tool-bar-mode 0)
@@ -316,7 +319,7 @@
   :bind (:map ctl-x-map ("p" . disproject-dispatch)))
 
 ;; Load Personal Script
-(load-file "~/.emacs.d/tf.el")
+(load-file (expand-file-name "tf.el" user-emacs-directory))
 ;; (load-file "~/.emacs.d/password-generator/password-generator.el")
 
 ;; Global Key Binds
