@@ -1,4 +1,3 @@
-
 (menu-bar-mode 0)
 ;; OS X related settings
 (when (eq system-type 'darwin)
@@ -125,7 +124,7 @@
 
 (use-package dashboard
   :ensure t
-  :config  (dashboard-setup-startup-hook)
+  :config (dashboard-setup-startup-hook)
   :init (setf dashboard-startup-banner 'logo
               dashboard-display-icons-p t
               dashboard-icon-type 'nerd-icons
