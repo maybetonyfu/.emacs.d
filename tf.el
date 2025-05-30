@@ -55,6 +55,24 @@
       (insert (car pair))
       )))
 
+ (defun tf-select-inside-surround ()
+   "Select the inside of the closest set of enclosure"
+   (interactive)
+   (backward-up-list 1 t t)
+   (forward-char)
+   (push-mark (point))
+   (backward-up-list 1 t t)
+   (forward-sexp)
+   (backward-char)
+   (activate-mark))
+
+ (defun tf-select-around-surround ()
+   "Select the text inside the closest enclosure, including the enclosure itself."
+   (interactive)
+   (backward-up-list 1 t t)
+   (push-mark (point))
+   (forward-sexp)
+   (activate-mark))
 
 (defun tf-move-to-char (char)
   "Move to the provided char"
