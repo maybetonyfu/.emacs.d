@@ -1,3 +1,5 @@
-**/*
+*
 !.gitignore
+!tf.el
 !init.el
+!early-init.el
